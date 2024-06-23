@@ -27,9 +27,10 @@ function CreateDocument() {
     });
   }
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+  const handleFileChange = (file) => {
+      setFile(file.file || file)
   };
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -70,9 +71,14 @@ function CreateDocument() {
           <Col span={24}>
             <label>
               <span style={{marginRight: 5}}>Arquivo:</span>
-              <Upload onChange={handleFileChange} required>
-                <Button loading={loading} icon={<UploadOutlined />}>Upload</Button>
-              </Upload>
+              <Upload
+              onChange={handleFileChange}
+              showUploadList={true}
+              beforeUpload={() => false}
+              maxCount={1}
+            >
+              <Button loading={loading} icon={<UploadOutlined />}>Selecionar Arquivo</Button>
+            </Upload>
             </label>
           </Col>
         </Row>
