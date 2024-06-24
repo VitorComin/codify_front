@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Input, Button } from "antd";
+import { Input, Button, Typography, Row } from "antd";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 
 function About() {
   const [password, setPassword] = useState("");
@@ -49,8 +50,31 @@ function About() {
         marginTop: "20vh",
       }}
     >
-      <Input onChange={(e) => setPassword(e.target.value)} />
-      <Button onClick={handleShowDocument}>Mostrar</Button>
+      {!uploaded ? (
+        <>
+          <Input.Password
+            title="Digite a senha"
+            onChange={(e) => setPassword(e.target.value)}
+            iconRender={(visible) =>
+              visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+            }
+          />
+          <Button onClick={handleShowDocument}>Mostrar documento</Button>
+        </>
+      ) : (
+        <>
+          <Row>
+            <Typography.Paragraph>"{document.message}":</Typography.Paragraph>
+          </Row>
+          <Row style={{ marginLeft: 10 }}>
+            <Typography.Paragraph>
+              <Button onClick={() => window.open(`${document.url}`, "_blank")}>
+                Baixa arquivo
+              </Button>
+            </Typography.Paragraph>
+          </Row>
+        </>
+      )}
     </div>
   );
 }
