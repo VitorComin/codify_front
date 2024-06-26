@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { Upload, Input, Button, Row, Col } from "antd";
+import { Upload, Input, Button, Row, Col, Typography } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+
+const { Title } = Typography;
+const { TextArea } = Input;
 
 function CreateDocument() {
   const [file, setFile] = useState(null);
@@ -55,7 +58,7 @@ function CreateDocument() {
         console.log("Document created successfully:", data);
         showSuccessAlert();
         setFileUploaded(data);
-        console.log(data)
+        console.log(data);
         setUploaded(true);
       } else {
         console.error("Error creating document:", data);
@@ -74,15 +77,14 @@ function CreateDocument() {
         justifyContent: "center",
         alignItems: "center",
         display: "flex",
-        marginTop: "20vh",
+        marginTop: "10vh",
       }}
     >
       {!uploaded ? (
         <form onSubmit={handleSubmit}>
-          <Row gutter={16}>
+          <Row gutter={16} style={{ marginBottom: 10 }}>
             <Col span={24}>
               <label>
-                <span style={{ marginRight: 5 }}>Arquivo:</span>
                 <Upload
                   onChange={handleFileChange}
                   showUploadList={true}
@@ -96,26 +98,36 @@ function CreateDocument() {
               </label>
             </Col>
           </Row>
-          <Row gutter={16} style={{ justifyContent: "center", margin: 10 }}>
-            <Col span={12}>
-              <label>
-                Senha de Segurança:
-                <Input.Password
-                  disabled={loading}
-                  value={securityPassword}
-                  onChange={(e) => setSecurityPassword(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                Mensagem:
-                <Input
-                  disabled={loading}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  required
-                />
-              </label>
+          <Row
+            gutter={16}
+            style={{ justifyContent: "center", margin: 25, marginTop: -20 }}
+          >
+            <Col span={24}>
+              <Title level={5}>Senha</Title>
+              <Input.Password
+                placeholder="Crie uma senha"
+                disabled={loading}
+                value={securityPassword}
+                onChange={(e) => setSecurityPassword(e.target.value)}
+                required
+              />
+            </Col>
+          </Row>
+          <Row
+            gutter={16}
+            style={{ justifyContent: "center", margin: 25, marginTop: -20 }}
+          >
+            <Col span={24}>
+              <Title level={5}>Mensagem</Title>
+              <TextArea
+                showCount
+                maxLength={100}
+                placeholder="Digite sua mensagem"
+                disabled={loading}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+              />
             </Col>
           </Row>
           <Row gutter={16}>
@@ -127,7 +139,7 @@ function CreateDocument() {
           </Row>
         </form>
       ) : (
-        <Input value={`http://localhost:3001/${fileUploaded.id || '1'}`}/>
+        <Input value={`http://localhost:3001/${fileUploaded.id || "1"}`} />
       )}
     </div>
   );

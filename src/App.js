@@ -1,7 +1,12 @@
 import React from "react";
 import "./App.css";
 import { Layout, Menu, Typography, theme } from "antd";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  NavLink,
+} from "react-router-dom";
 import CreateDocument from "./pages/createDocument/CreateDocument.js";
 import About from "./pages/About/About.js";
 import ShowDocument from "./pages/showDocument/ShowDocument.js";
@@ -36,11 +41,14 @@ function App() {
               style={{ flex: 1, minWidth: 0 }}
             >
               {items.map((item) => (
-                <Menu.Item
-                  key={item.key}
-                  onClick={() => (window.location.href = item.path)}
-                >
-                  {item.label}
+                <Menu.Item key={item.key}>
+                  <NavLink
+                    to={item.path}
+                    exact
+                    activeClassName="ant-menu-item-selected"
+                  >
+                    {item.label}
+                  </NavLink>
                 </Menu.Item>
               ))}
             </Menu>
