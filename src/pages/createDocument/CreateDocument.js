@@ -115,7 +115,7 @@ function CreateDocument() {
           </Row>
           <Row
             gutter={16}
-            style={{ justifyContent: "center", margin: 25, marginTop: -20 }}
+            style={{ justifyContent: "center", margin: 25, marginTop: -30 }}
           >
             <Col span={24}>
               <Title level={5}>Mensagem</Title>
