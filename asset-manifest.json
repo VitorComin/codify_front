@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/codify_front_test/static/css/main.5a3ad750.css",
+    "main.js": "/codify_front_test/static/js/main.1fea9147.js",
+    "static/js/453.ed3810f9.chunk.js": "/codify_front_test/static/js/453.ed3810f9.chunk.js",
+    "index.html": "/codify_front_test/index.html",
+    "main.5a3ad750.css.map": "/codify_front_test/static/css/main.5a3ad750.css.map",
+    "main.1fea9147.js.map": "/codify_front_test/static/js/main.1fea9147.js.map",
+    "453.ed3810f9.chunk.js.map": "/codify_front_test/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a3ad750.css",
+    "static/js/main.1fea9147.js"
+  ]
+}
